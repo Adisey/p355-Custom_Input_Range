@@ -1,24 +1,16 @@
 import React from 'react';
-import styles from './index.module.scss'
+import styles from './styles.module.scss'
+import { Range } from '../Components'
 
 function Index() {
-  return (
-    <div className={styles.App}>
-      <header className={styles.AppHeader}>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className={styles.AppLink}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className={styles.app}>
+            <div className={styles.body}>
+                header
+                <Range/>
+            </div>
+        </div>
+    );
 }
 
 export default Index;

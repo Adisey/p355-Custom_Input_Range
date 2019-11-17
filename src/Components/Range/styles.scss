@@ -32,8 +32,7 @@ $thumbBorderRadius: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 5px;
-
+    //justify-content: space-around;
 
     .item {
       border: 0 solid $scaleColor;
@@ -56,6 +55,7 @@ $thumbBorderRadius: 50%;
       outline: none;
       &::-webkit-slider-runnable-track {
         background: $trackColor;
+        border: 1px solid #F00;
       }
       &::-ms-fill-lower {
         background: $thumbBackground;

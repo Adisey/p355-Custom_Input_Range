@@ -1,4 +1,27 @@
 $scaleColor: #00f;
+$mainColor: #2497E3;
+$defaultColor: #dedede;
+// Track
+$trackColor: $defaultColor;
+$trackProgress: $mainColor;
+$trackHeight: 3px;
+$trackBorder: 0px;
+$trackBoxShadow1: 0px;
+$trackBoxShadow2: 0px;
+$trackBoxShadow3: 0px;
+$trackBoxShadowColor: $mainColor;
+$trackBorderRadius: 0px;
+// Thumb
+$thumbSize: 10px;
+$thumbBorder: 1px;
+$thumbBoxShadow1: 0px;
+$thumbBoxShadow2: 0px;
+$thumbBoxShadow3: 0px;
+$thumbMarginTop: calc((#{$trackHeight} + #{$trackBorder} - #{$thumbSize} - #{$thumbBorder}) / 2);
+$thumbBorderColor: $mainColor;
+$thumbBackground: $mainColor;
+$thumbBoxShadowColor: $mainColor;
+$thumbBorderRadius: 50%;
 .range {
   //border: 1px solid #f0f;
   width: 90%;
@@ -10,7 +33,7 @@ $scaleColor: #00f;
     justify-content: space-between;
     //justify-content: space-around;
 
-    .item{
+    .item {
       border: 0 solid $scaleColor;
       height: 10px;
       //width: 100%;
@@ -19,7 +42,105 @@ $scaleColor: #00f;
     }
   }
   .input {
+    height: 25px;
+    -webkit-appearance: none;
+    margin: 10px 0;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    &:focus {
+      outline: none;
+      &::-webkit-slider-runnable-track {
+        background: $trackColor;
+      }
+      &::-ms-fill-lower {
+        background: $thumbBackground;
+      }
+      &::-ms-fill-upper {
+        background: $thumbBackground;
+      }
+    }
+    // Track
+    &::-webkit-slider-runnable-track {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+      background: $trackColor;
+      border-radius: $trackBorderRadius;
+      border: $trackBorder solid #000000;
+    }
+    &::-moz-range-track {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+      background: $trackColor;
+      border-radius: $trackBorderRadius;
+      border: $trackBorder solid #000000;
+    }
+    &::-moz-range-progress {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+      background: $trackProgress;
+      border-radius: $trackBorderRadius;
+      border: $trackBorder solid #000000;
+    }
+    &::-ms-track {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+    &::-ms-fill-lower {
+      background: $trackProgress;
+      border: $trackBorder solid #000000;
+      border-radius: $trackBorderRadius;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+    }
+    &::-ms-fill-upper {
+      background: $trackColor;
+      border: $trackBorder solid #000000;
+      border-radius: $trackBorderRadius;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+    }
+    // Thumb
+    &::-webkit-slider-thumb {
+      margin-top: $thumbMarginTop;
+      //box-shadow: $thumbBoxShadow1 $thumbBoxShadow2 $thumbBoxShadow3 $thumbBoxShadowColor;
+      box-shadow: -100vw 0 0 100vw red;
+      border: $thumbBorder solid $thumbBorderColor;
+      height: $thumbSize;
+      width: $thumbSize;
+      border-radius: $thumbBorderRadius;
+      background: $thumbBackground;
+      cursor: pointer;
+      -webkit-appearance: none;
+    }
+    &::-moz-range-thumb {
+      box-shadow: $thumbBoxShadow1 $thumbBoxShadow2 $thumbBoxShadow3 $thumbBoxShadowColor;
+      border: $thumbBorder solid $thumbBorderColor;
+      height: $thumbSize;
+      width: $thumbSize;
+      border-radius: $thumbBorderRadius;
+      background: $thumbBackground;
+      cursor: pointer;
+    }
+    &::-ms-thumb {
+      margin-top: 1px;
+      box-shadow: $thumbBoxShadow1 $thumbBoxShadow2 $thumbBoxShadow3 $thumbBoxShadowColor;
+      border: $thumbBorder solid $thumbBorderColor;
+      height: $thumbSize;
+      width: $thumbSize;
+      border-radius: $thumbBorderRadius;
+      background: $thumbBackground;
+      cursor: pointer;
+    }
   }
   .lables {
     color: blue;

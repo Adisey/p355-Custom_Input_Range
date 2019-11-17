@@ -11,18 +11,10 @@ function Range(props) {
     for (let sc=min; sc <= max; sc=sc+step) {
         scaleJSX.push(<div className={styles.item} key={sc}/>)
     }
-    const position = (value-min)/(max-min)
+    const position = (value-min)/(max-min);
     const customStyle = {
-        // "$ssss": '22px',
-        // backgroundImage: `-webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${position}, #0F0), color-stop(${position}, #00F))`,
-        // 'input:-webkit-slider-runnable-track':{
-        //     backgroundColor: '#F00',
-        // },
-        // 'WebkitSliderRunnableTrack':{
-        //     backgroundColor: '#0F0',
-        // }
-        //
-    }
+        '--rangePosition': position
+    };
 
 
     return (

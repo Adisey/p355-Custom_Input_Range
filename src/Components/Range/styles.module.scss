@@ -55,13 +55,13 @@ $thumbBorderRadius: 50%;
     &:focus {
       outline: none;
       &::-webkit-slider-runnable-track {
-        background: $trackColor;
+        //background: $trackColor;
       }
       &::-ms-fill-lower {
-        background: $thumbBackground;
+        //background: $thumbBackground;
       }
       &::-ms-fill-upper {
-        background: $thumbBackground;
+        //background: $thumbBackground;
       }
     }
     // Track
@@ -73,6 +73,7 @@ $thumbBorderRadius: 50%;
       background: $trackColor;
       border-radius: $trackBorderRadius;
       border: $trackBorder solid #000000;
+      background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(var(--rangePosition), $mainColor), color-stop(var(--rangePosition), $trackColor));
       //background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop($progressPercent, $mainColor), color-stop($progressPercent, $trackColor));
     }
     &::-moz-range-track {

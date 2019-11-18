@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { Range } from '../Components'
 
 function Index() {
-    const [val01, setVal01] = useState (50)
+    const [val01, setVal01] = useState (10)
     return (
         <div className={styles.app}>
             <div className={styles.body}>
@@ -11,22 +11,25 @@ function Index() {
                 <Range
                     value={val01}
                     min={0}
-                    max={100}
+                    max={30}
                     step={1}
+                    marker={10}
                     onChange={setVal01}
                 />
                 <Range
                     value={val01}
                     min={0}
-                    max={100}
-                    step={5}
+                    max={30}
+                    step={1}
+                    marker={5}
                     onChange={setVal01}
                 />
                 <Range
                     value={val01}
                     min={0}
-                    max={100}
-                    step={10}
+                    max={25}
+                    step={2}
+                    marker={7}
                     onChange={setVal01}
                 />
             </div>

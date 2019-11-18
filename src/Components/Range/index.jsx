@@ -3,35 +3,64 @@ import styles from './styles.module.scss'
 import './styles.scss'
 
 function Range(props) {
-    const { value, min, max, step, onChange } = props;
-    const change = (event) => {
-        !!onChange && onChange (event.target.value)
-    };
-    const scaleJSX = [];
-    for (let sc=min; sc <= max; sc=sc+step) {
-        scaleJSX.push(<div className={styles.item} key={sc}/>)
+    const {value, min, max, step, marker, onChange, suffix, prefix} = props;
+
+    const localMarker = marker ? Math.ceil(marker/step)*step : (max - min) / 10;
+    console.log('-(Range)-localMarker->', localMarker, '-------------------------------------------------')
+
+    const median = Math.floor((localMarker - min) / 2)
+    console.log('-(Range)-median->', median);
+    let part = 0;
+    const parts = {};
+    const minPoint = 4;
+    const maxPoint = 12;
+    for (let point = min; point < localMarker; point = point + step) {
+        const heightPercent = point <= median ? (localMarker - point * 2) / localMarker : (point - median) * 2 / localMarker;
+        const height =  (maxPoint-minPoint)*heightPercent +minPoint
+        console.log(`-point-(${ point })-heightPercent->`, heightPercent, 'height=>', height)
+        parts[point] = height
     }
-    const position = (value-min)/(max-min);
+    console.log('-(Range)-parts->', parts);
+
+    const change = (event) => {
+        !!onChange && onChange(event.target.value)
+    };
+    const scalePointJSX = [];
+    for (let sc = min; sc <= max; sc = sc + step) {
+        let indexInPart = sc - part
+        if (indexInPart >= localMarker) {
+            part = part + localMarker;
+            indexInPart = 0
+            console.log('-(----)-part->', part)
+        }
+
+        console.log('sc=>', sc, 'indexInPart->', indexInPart, 'height==>', parts[indexInPart])
+        const itemStyle = {
+            'height': `${parts[indexInPart]}px`,
+            backgroundColor: sc<=value ? '#51B5F3': '#DDDDDD'
+        };
+
+        scalePointJSX.push(<div className={ styles.scaleItem } key={ sc } style={itemStyle} />)
+    }
+    const position = (value - min) / (max - min);
     const customStyle = {
         '--rangePosition': position
     };
-
-
     return (
-        <div className={styles.range}>
-            <div className={styles.scale}>
-                {scaleJSX}
+        <div className={ styles.range }>
+            <div className={ styles.scale }>
+                { scalePointJSX }
             </div>
             <input
-                value={value}
+                value={ value }
                 type="range"
-                onChange={change}
-                min={min}
-                max={max}
-                step={step}
+                onChange={ change }
+                min={ min }
+                max={ max }
+                step={ step }
                 list="tickmarks"
-                className={styles.input}
-                style={customStyle}
+                className={ styles.input }
+                style={ customStyle }
             />
             <datalist id="tickmarks">
                 <option value="0" label="0%"/>
@@ -57,5 +86,7 @@ Range.defaultProps = {
     min: 0,
     max: 100,
     step: 1,
+    suffix: '',
+    prefix: ''
 };
 

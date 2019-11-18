@@ -24,27 +24,52 @@ $thumbBorderRadius: 50%;
 // scale
 $scaleItemWidth: 2px;
 .range {
-  //border: 1px solid #f0f;
-  width: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
-  .scale {
+  .title {
+    align-self: flex-start;
+    font-size: 14px;
+    color: #53565A;
+    margin-bottom: 8px;
+
+    span {
+      color: $mainColor;
+    }
+  }
+
+
+  .scalePoint {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
     margin: 0 calc(#{$thumbSize} / 2 - #{$scaleItemWidth} / 2);
-    height: 14px;
 
-    .scaleItem {
+    .scalePointItem {
       width: $scaleItemWidth;
-      //background-color: $mainColor;
+    }
+  }
+
+  .scaleValues {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //align-items: flex-end;
+    //margin: 0 calc(#{$thumbSize} / 2 - #{$scaleItemWidth} / 2);
+
+    .scaleValuesItem {
+      min-width: 25px;
+      font-size: 13px;
+      color: #A0A0A2;
     }
   }
 
   .input {
     height: 25px;
     -webkit-appearance: none;
-    margin: 4px 0;
+    margin: 0;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -155,11 +180,6 @@ $scaleItemWidth: 2px;
       cursor: pointer;
     }
   }
-
-  .lables {
-    color: blue;
-  }
-;
 }
 
 

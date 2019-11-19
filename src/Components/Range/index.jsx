@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
+import cx from 'classnames'
 import styles from './styles.module.scss'
-import './styles.scss'
 
 function Range(props) {
     const {value, min, max, step, marker, onChange, prefix, suffix, title} = props;
@@ -32,10 +32,11 @@ function Range(props) {
                     indexInPart = 0;
                 }
                 const itemStyle = {
-                    'height': `${ parts[indexInPart] }px`,
-                    backgroundColor: sc <= value ? '#51B5F3' : '#DDDDDD'
+                    'height': `${ parts[indexInPart] }px`
                 };
-                scalePointJSX.push(<div className={ styles.scalePointItem } key={ sc } style={ itemStyle }/>)
+                scalePointJSX.push(<div
+                    className={ cx(styles.scalePointItem, sc <= value ? styles.active : styles.default) } key={ sc }
+                    style={ itemStyle }/>)
             }
             return scalePointJSX
         }, [min, max, step, calcMarker, value, parts]

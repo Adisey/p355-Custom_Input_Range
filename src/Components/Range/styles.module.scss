@@ -27,37 +27,43 @@ $scaleItemWidth: 2px;
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  .title {
+  & .title {
     align-self: flex-start;
     font-size: 14px;
     color: #53565A;
     margin-bottom: 8px;
 
-    span {
+    & span {
       color: $mainColor;
     }
   }
 
 
-  .scalePoint {
+  & .scalePoint {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
     margin: 0 calc(#{$thumbSize} / 2 - #{$scaleItemWidth} / 2);
 
-    .scalePointItem {
+    & .scalePointItem {
       width: $scaleItemWidth;
     }
+    & .active{
+      background: $mainColor;
+    }
+    & .default{
+      background: $defaultColor;
+    }
+
   }
 
-  .scaleValues {
+  & .scaleValues {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-    .scaleValuesItem {
+    & .scaleValuesItem {
       min-width: 25px;
       font-size: 13px;
       color: #A0A0A2;
@@ -67,7 +73,7 @@ $scaleItemWidth: 2px;
     }
   }
 
-  .input {
+  & .input {
     height: 25px;
     -webkit-appearance: none;
     margin: 0;

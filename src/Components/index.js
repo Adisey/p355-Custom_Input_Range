@@ -1,3 +1,7 @@
 import Range from './Range'
+import Test from './Test'
 
-export {Range}
+export {
+    Range,
+    Test
+}

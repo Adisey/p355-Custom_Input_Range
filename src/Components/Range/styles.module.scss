@@ -63,6 +63,9 @@ $scaleItemWidth: 2px;
       min-width: 25px;
       font-size: 13px;
       color: #A0A0A2;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
     }
   }
 

@@ -56,8 +56,6 @@ $scaleItemWidth: 2px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    //align-items: flex-end;
-    //margin: 0 calc(#{$thumbSize} / 2 - #{$scaleItemWidth} / 2);
 
     .scaleValuesItem {
       min-width: 25px;
@@ -98,7 +96,6 @@ $scaleItemWidth: 2px;
     &::-webkit-slider-runnable-track {
       height: $trackHeight;
       cursor: pointer;
-      animate: 0.2s;
       box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
       border-radius: $trackBorderRadius;
       border: $trackBorder solid #000000;
@@ -108,7 +105,6 @@ $scaleItemWidth: 2px;
     &::-moz-range-track {
       height: $trackHeight;
       cursor: pointer;
-      animate: 0.2s;
       box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
       background: $trackColor;
       border-radius: $trackBorderRadius;
@@ -118,7 +114,6 @@ $scaleItemWidth: 2px;
     &::-moz-range-progress {
       height: $trackHeight;
       cursor: pointer;
-      animate: 0.2s;
       box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
       background: $trackProgress;
       border-radius: $trackBorderRadius;
@@ -128,7 +123,6 @@ $scaleItemWidth: 2px;
     &::-ms-track {
       height: $trackHeight;
       cursor: pointer;
-      animate: 0.2s;
       background: transparent;
       border-color: transparent;
       color: transparent;

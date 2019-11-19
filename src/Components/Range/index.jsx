@@ -6,28 +6,23 @@ function Range(props) {
     const {value, min, max, step, marker, onChange, prefix, suffix, title} = props;
 
     const calcMarker = useMemo(() => {
-            console.log('-(RERENDER calcMarker ->', marker, step);
             return marker ? Math.ceil(marker / step) * step : (max - min) / 10;
         }, [marker, max, min, step]
     );
 
     const parts = useMemo(() => {
-        console.log('-(RERENDER part ->', min, step, calcMarker);
         const median = Math.floor((calcMarker - min) / 2);
         const parts = {};
         const minPoint = 4;
         const maxPoint = 12;
         for (let point = min; point < calcMarker; point = point + step) {
             const heightPercent = point <= median ? (calcMarker - point * 2) / calcMarker : (point - median) * 2 / calcMarker;
-            const height = (maxPoint - minPoint) * heightPercent + minPoint;
-            console.log(`!!!!!!!!!!!1-point-(${ point })-heightPercent->`, heightPercent, 'height=>', height);
-            parts[point] = height
+            parts[point] = (maxPoint - minPoint) * heightPercent + minPoint;
         }
         return parts
     }, [min, step, calcMarker]);
 
     const scalePointJSX = useMemo(() => {
-            console.log('-(RERENDER useMemo scalePointJSX)-min, max, step, calcMarker, value->', min, max, step, calcMarker, value);
             let part = 0;
             const scalePointJSX = [];
             for (let sc = min; sc <= max; sc = sc + step) {
@@ -48,23 +43,19 @@ function Range(props) {
 
     const customStyle = useMemo(() => {
             const position = (value - min) / (max - min);
-            console.log('-(RERENDER useMemo customStyle)-min, max, value, position ->', min, max, value, position);
             return {'--rangePosition': position};
         },
         [min, max, value]
     );
 
     const scaleValuesJSX = useMemo(() => {
-            console.log('-(RERENDER useMemo scaleValuesJSX)-min, max, calcMarker->', min, max, calcMarker);
             const scaleValuesTMPJSX = [];
             for (let sc = min; sc <= max; sc = sc + calcMarker) {
                 const showVal = `${ prefix ? prefix : '' }${ sc }${ suffix ? suffix : '' }`;
                 scaleValuesTMPJSX.push(<div className={ styles.scaleValuesItem } key={ sc }>{ showVal }</div>)
             }
-
             return scaleValuesTMPJSX
-        },
-        [min, max, calcMarker, prefix, suffix]
+        }, [min, max, calcMarker, prefix, suffix]
     );
 
     const change = (event) => {

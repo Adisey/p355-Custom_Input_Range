@@ -14,7 +14,7 @@ function Range(props) {
     for (let point = min; point < localMarker; point = point + step) {
         const heightPercent = point <= median ? (localMarker - point * 2) / localMarker : (point - median) * 2 / localMarker;
         const height = (maxPoint - minPoint) * heightPercent + minPoint;
-        console.log(`-point-(${ point })-heightPercent->`, heightPercent, 'height=>', height);
+        // console.log(`-point-(${ point })-heightPercent->`, heightPercent, 'height=>', height);
         parts[point] = height
     }
 

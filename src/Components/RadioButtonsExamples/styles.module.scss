@@ -1,0 +1,185 @@
+$mainColor: #51B5F3;
+$defaultColor: #DDDDDD;
+// Track
+$trackColor: $defaultColor;
+$trackProgress: $mainColor;
+$trackHeight: 2px;
+$trackBorder: 0px;
+$trackBoxShadow1: 0px;
+$trackBoxShadow2: 0px;
+$trackBoxShadow3: 0px;
+$trackBoxShadowColor: $mainColor;
+$trackBorderRadius: 1px;
+// Thumb
+$thumbSize: 16px;
+$thumbBorder: 1px;
+$thumbBoxShadow1: 0px;
+$thumbBoxShadow2: 0px;
+$thumbBoxShadow3: 0px;
+$thumbMarginTop: calc((#{$trackHeight} + #{$trackBorder} - #{$thumbSize} - #{$thumbBorder}) / 2);
+$thumbBorderColor: $mainColor;
+$thumbBackground: $mainColor;
+$thumbBoxShadowColor: $mainColor;
+$thumbBorderRadius: 50%;
+// scale
+$scaleItemWidth: 2px;
+.range {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    align-self: flex-start;
+    font-size: 14px;
+    color: #53565A;
+    margin-bottom: 8px;
+
+    span {
+      color: $mainColor;
+    }
+  }
+
+
+  .scalePoint {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 calc(#{$thumbSize} / 2 - #{$scaleItemWidth} / 2);
+
+    .scalePointItem {
+      width: $scaleItemWidth;
+    }
+  }
+
+  .scaleValues {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //align-items: flex-end;
+    //margin: 0 calc(#{$thumbSize} / 2 - #{$scaleItemWidth} / 2);
+
+    .scaleValuesItem {
+      min-width: 25px;
+      font-size: 13px;
+      color: #A0A0A2;
+    }
+  }
+
+  .input {
+    height: 25px;
+    -webkit-appearance: none;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+
+    &:focus {
+      outline: none;
+
+      &::-webkit-slider-runnable-track {
+        //background: $trackColor;
+      }
+
+      &::-ms-fill-lower {
+        //background: $thumbBackground;
+      }
+
+      &::-ms-fill-upper {
+        //background: $thumbBackground;
+      }
+    }
+
+    // Track
+    &::-webkit-slider-runnable-track {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+      border-radius: $trackBorderRadius;
+      border: $trackBorder solid #000000;
+      background: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(var(--rangePosition), $mainColor), color-stop(var(--rangePosition), $trackColor));
+    }
+
+    &::-moz-range-track {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+      background: $trackColor;
+      border-radius: $trackBorderRadius;
+      border: $trackBorder solid #000000;
+    }
+
+    &::-moz-range-progress {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+      background: $trackProgress;
+      border-radius: $trackBorderRadius;
+      border: $trackBorder solid #000000;
+    }
+
+    &::-ms-track {
+      height: $trackHeight;
+      cursor: pointer;
+      animate: 0.2s;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+
+    &::-ms-fill-lower {
+      background: $trackProgress;
+      border: $trackBorder solid #000000;
+      border-radius: $trackBorderRadius;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+    }
+
+    &::-ms-fill-upper {
+      background: $trackColor;
+      border: $trackBorder solid #000000;
+      border-radius: $trackBorderRadius;
+      box-shadow: $trackBoxShadow1 $trackBoxShadow2 $trackBoxShadow3 $trackBoxShadowColor;
+    }
+
+    // Thumb
+    &::-webkit-slider-thumb {
+      margin-top: $thumbMarginTop;
+      box-shadow: $thumbBoxShadow1 $thumbBoxShadow2 $thumbBoxShadow3 $thumbBoxShadowColor;
+      //box-shadow: -100vw 0 0 100vw red;
+      border: $thumbBorder solid $thumbBorderColor;
+      height: $thumbSize;
+      width: $thumbSize;
+      border-radius: $thumbBorderRadius;
+      background: $thumbBackground;
+      cursor: pointer;
+      -webkit-appearance: none;
+    }
+
+    &::-moz-range-thumb {
+      box-shadow: $thumbBoxShadow1 $thumbBoxShadow2 $thumbBoxShadow3 $thumbBoxShadowColor;
+      border: $thumbBorder solid $thumbBorderColor;
+      height: $thumbSize;
+      width: $thumbSize;
+      border-radius: $thumbBorderRadius;
+      background: $thumbBackground;
+      cursor: pointer;
+    }
+
+    &::-ms-thumb {
+      margin-top: 1px;
+      box-shadow: $thumbBoxShadow1 $thumbBoxShadow2 $thumbBoxShadow3 $thumbBoxShadowColor;
+      border: $thumbBorder solid $thumbBorderColor;
+      height: $thumbSize;
+      width: $thumbSize;
+      border-radius: $thumbBorderRadius;
+      background: $thumbBackground;
+      cursor: pointer;
+    }
+  }
+}
+
+

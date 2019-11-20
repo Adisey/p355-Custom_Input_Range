@@ -1,5 +1,6 @@
 .app {
   text-align: center;
+
   & .body {
     background-color: #fff;
     min-height: 100vh;
@@ -9,12 +10,12 @@
     justify-content: flex-start;
     font-size: calc(10px + 2vmin);
     color: #000;
-
     & .container {
-      width: 90%;
-      border: 1px solid #0000ff;
+      border: 1px solid #00f;
+      border-radius: 5px;
       padding: 10px;
-      border-radius: 10px;
+      margin: 10px;
+      width: 90%;
     }
   }
 }
